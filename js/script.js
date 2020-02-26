@@ -3,12 +3,12 @@ const code = document.querySelector('.code-text');
 const key = document.querySelector('.key-text');
 const keyLocation = document.querySelector('.location-text');
 const openingText = document.querySelector('.intro');
-const openingTextCSS = `<style>.intro {display: none;}</style>`;
+const openingTextCSS = '<style>.intro {display: none;}</style>';
 const allCards = document.querySelectorAll('.card');
 let active = false;
 
 const keyPress = document.addEventListener('keydown', (event) => {
-  if (active === false) {
+  if (!active) {
     openingText.insertAdjacentHTML('afterbegin', openingTextCSS);
     active = true;
     for (let i = 0; i < allCards.length; i += 1) {
@@ -18,6 +18,8 @@ const keyPress = document.addEventListener('keydown', (event) => {
   keycode.textContent = event.keyCode;
   code.textContent = event.code;
   if (event.keyCode === 32) {
+    // Prevent scroll if user hits spacebar
+    event.preventDefault();
     key.textContent = 'Spacebar';
   } else {
     key.textContent = event.key;

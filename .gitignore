@@ -1,1 +1,7 @@
+# Directories
+node_modules
+# Files
 .DS_Store
+.eslintrc.json
+package.json
+package-lock.json
